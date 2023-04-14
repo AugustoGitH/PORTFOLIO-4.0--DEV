@@ -1,0 +1,21 @@
+{
+  "exclude": [
+    "client"
+  ],
+  "include": [
+    "server/src"
+  ],
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "target": "es2016",                                
+    "lib": ["es6"],                                                    
+    "module": "commonjs",                               
+    "outDir": "./server/dist",  
+    "rootDir": "./server/src",                               
+    "removeComments": true,                          
+    "esModuleInterop": true,                            
+    "forceConsistentCasingInFileNames": true,          
+    "skipLibCheck": true,
+    "strictNullChecks": false                               
+  }
+}

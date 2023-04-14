@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+:root {
+  --color-background-solid: #201c1c;
+  --color-background-light: rgb(43, 37, 37);
+  --color-yellow: #e9b95b;
+  --color-light: #e8ecec;
+  --color-dark: #000000;
+  --color-dark-light: #000000a5;
+  --width-limit-content: 1200px;
+  --font-Poppins: "Poppins", sans-serif;
+  --font-Alegreya: "Alegreya Sans SC", sans-serif;
+
+  --font-size-small: .9rem;
+  --font-size-medium: 1.2rem;
+  --font-size-large: 1.5rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background-solid);
+  color: var(--color-white);
+  font-family: var(--font-Poppins);
+}
