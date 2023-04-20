@@ -11,6 +11,9 @@ export const Home = styled.section`
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
+        @media (max-width: 920px) {
+            flex-direction: column-reverse;
+        }
     }
 `
 

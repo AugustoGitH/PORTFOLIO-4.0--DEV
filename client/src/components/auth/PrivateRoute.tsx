@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
-import useVerifyCredential from "../../services/useFetch/useVerifyCredential";
+import useFetchVerifyCredential from "../../queries/verifyCredential";
 
 
 interface IPropsPrivateRouter{
     children: JSX.Element,
     redirect: string,
-    reverse?: boolean
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const PrivateRouter = ({
-    children, redirect, reverse }: IPropsPrivateRouter) => {
-        const { isAuthenticated } = useVerifyCredential( reverse )
-  
-    return  isAuthenticated === null
-    ? <></>
-    : isAuthenticated
-      ? children
-      : <Navigate to={redirect} />;
+    children, redirect }: IPropsPrivateRouter) => {
+        const { data: auth, isFetching } = useFetchVerifyCredential()
+        
+        if(!auth && !isFetching) return <Navigate to={redirect} />
+        if(auth) return children
+        return <></>
   }
 
 

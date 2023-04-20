@@ -6,13 +6,29 @@ export interface TProjectImages {
   images: string[]
 }
 
+export type TRepositoryTechnologiesPoints = {
+  [key: string]: number
+}
+
 export interface TProjectSubmitClient {
   name: string
   images: TProjectImages
-  type: TProjectType[]
+  technologiesUsed: string[]
+  type: TProjectType
   websiteLink: string
   videoLink: string
   repoId: number | null
-  techsPercents: object
+  repositoryTechnologiesPoints: TRepositoryTechnologiesPoints
   repoLink: string
+}
+
+export type TProjectEditabledSendByClient = {
+  orderOfFive: number,
+  name: string,
+  type: TProjectType,
+  technologiesUsed: string[]
+  websiteLink: string,
+  videoLink: string,
+  repoId: number | null,
+  idProject: string
 }

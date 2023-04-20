@@ -15,6 +15,14 @@ export const Header = styled.section`
   justify-content: flex-start;
   font-family: var(--font-Alegreya);
   box-shadow: 1px 1px 20px #00000025;
+
+  @media (max-width: 920px) {
+    width: 100%;
+    border-radius: 0;
+  }
+  @media (max-width: 400px) {
+    padding: 1rem 1rem 6rem 1rem;
+  }
 `;
 
 export const AboutMe = styled.div`
@@ -90,6 +98,7 @@ export const TextProjectsGit = styled.div`
 `;
 
 export const PercentTechs = styled.div`
+  width: 100%;
   margin-bottom: 70px;
   .title {
     display: flex;
@@ -112,6 +121,78 @@ export const PercentTechs = styled.div`
     }
   }
 `;
+
+export const TechnologiesPercentageChart = styled.div`
+  width: 100%;
+  margin-top: 2rem;
+  ul{
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.7rem;
+    .loader-techs{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bar-percent-tech-container{
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      .tech-name{
+        flex: none;
+        width: 90px;
+        text-transform: uppercase;
+        font-size: .9rem;
+        font-weight: bold;
+      }
+      .cont-bar{
+        flex: none;
+        width: calc(100% - 90px);
+        height: 10px;
+        background-color: #26242413;
+        .bar{
+          height: 100%;
+          background-color: var(--color-dark);
+          position: relative;
+          .percent{
+            position: absolute;
+            background-color: var(--color-dark);
+            color: #fff;
+            padding: .3rem .4rem;
+            font-size: .7rem;
+            border-radius: .3rem;
+            right: -1.4rem;
+            top: -1.7rem;
+            &::after{
+              content: "";
+              position: absolute;
+              width: 8px;
+              height: 8px;
+              background-color: var(--color-dark);
+              bottom: -.2rem;
+              left: .2rem;
+              transform: rotate(50deg);
+            }
+          }
+        }
+      }
+    }
+  }
+
+`
+
+
+
+
+
+
+
+
+
+
+
 
 export const ContactMe = styled.div`
   h3 {
@@ -180,7 +261,8 @@ export const ContactMe = styled.div`
 `;
 
 export const TextCopyRigth = styled.p`
-    margin-top: 70px;
+  width: 100%;
+  margin-top: 70px;
   text-align: center;
   line-height: 1rem;
 `;

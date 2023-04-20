@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import animationsPresence from "../../../../../animations/presence";
 
 
 
@@ -58,11 +59,61 @@ export const FiltersTypesProject = styled.ul`
 
 export const ProjectsList = styled.ul`
   width: 100%;
-  margin-top: 2.4rem;
+  max-height: 700px ;
+  overflow: auto;
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  justify-content: flex-start;
+  gap: 3rem;
+  padding-right: 1rem;
+  padding-bottom: 3rem;
+  @media (max-width: 1180px) {
+    gap: 4rem;
+  }
+  @media (max-width: 500px) {
+    padding: 0 .5rem;
+  }
+  &::-webkit-scrollbar {
+      width: 3px;
+      background-color: #c9abab1a;
+      border-radius: 1rem;
+    }
+    &::-webkit-scrollbar-thumb {
+      width: 100%;
+      height: 90px;
+      border-radius: 1rem;
+      background-color: rgba(218, 197, 197, 0.253);
+    }
+    
+  .project{
+    border-bottom: 1.5px solid #ffffff1d;
+  }
+  .project:last-child{
+    border-bottom: none
+  }
+  .loader-projects{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 0;
+  }
+  .not-projects{
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ${animationsPresence.scale};
+    span{
+      display: inline-block;
+      background-color: #ffffff14;
+      color: #ffffffab;
+      padding: .3rem 1rem;
+      border-radius: .3rem;
+      cursor: default;
+    }
+  }
 
 `

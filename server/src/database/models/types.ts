@@ -6,12 +6,13 @@ export type TProject = {
     name: string,
     images: TProjectImages,
     type: TProjectType[],
+    technologiesUsed: string[]
     websiteLink: string,
     videoLink: string,
     repoId: number | null,
     views: number,
     likes: number,
-    techsPercents: object,
+    repositoryTechnologiesPoints: object,
     repoLink: string,
     favorite: boolean
 }

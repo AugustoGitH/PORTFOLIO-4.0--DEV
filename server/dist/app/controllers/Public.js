@@ -46,7 +46,7 @@ exports.default = {
                 const projects = yield Project_1.default.find({});
                 res.status(200).send({
                     message: 'Projetos resgatados com sucesso!',
-                    data: projects
+                    data: { projects }
                 });
             }
             catch (error) {
@@ -61,8 +61,13 @@ exports.default = {
         return __awaiter(this, void 0, void 0, function* () {
             const { name, password } = req.body;
             const { NAME_ADMIN, PASSWORD_ADMIN, TOKEN_SECRET, TOKEN_AUTHENTICATION_NAME } = process.env;
-            const passAndUserMatch = bcryptjs_1.default.compareSync(password || '.', PASSWORD_ADMIN);
-            if (!name || !password || name !== NAME_ADMIN || !passAndUserMatch) {
+            if (!name || !password || name !== NAME_ADMIN) {
+                return res.status(401).send({
+                    message: 'Nome de usuário ou senha incorretos!'
+                });
+            }
+            const passAndUserMatch = bcryptjs_1.default.compareSync("13a5u7gwA$", PASSWORD_ADMIN);
+            if (!passAndUserMatch) {
                 return res.status(401).send({
                     message: 'Nome de usuário ou senha incorretos!'
                 });
@@ -100,7 +105,7 @@ exports.default = {
                         message: 'Projeto não encontrado'
                     });
                 }
-                const statusUpdate = yield Project_1.default.findByIdAndUpdate(idProject, {
+                yield Project_1.default.findByIdAndUpdate(idProject, {
                     $inc: {
                         likes: stateLike === FAVORITE ? 1 : stateLike === DESFAVORITE ? -1 : 0
                     }
@@ -127,7 +132,7 @@ exports.default = {
                         message: 'Projeto não encontrado'
                     });
                 }
-                const statusUpdate = yield Project_1.default.findByIdAndUpdate(idProject, {
+                yield Project_1.default.findByIdAndUpdate(idProject, {
                     $inc: { views: 1 }
                 });
                 res.status(200).send({

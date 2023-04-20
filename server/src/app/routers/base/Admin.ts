@@ -37,7 +37,7 @@ export const adminRouters: TRoute[] = [
         controller: controllersAdmin.updateProject
     },
     {
-        path: `${baseRoute}/delete-project`,
+        path: `${baseRoute}/delete-project/:idProject`,
         method: "delete",
         controller: controllersAdmin.deleteProject
     }

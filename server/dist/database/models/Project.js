@@ -6,12 +6,13 @@ const projectSchema = new mongoose_1.Schema({
     name: { type: String, required: true },
     images: { type: Object, required: true },
     type: { type: String, required: true },
+    technologiesUsed: { type: Array, required: true },
     websiteLink: { type: String, default: "" },
     videoLink: { type: String, default: "" },
     repoId: { type: Number, default: null },
     views: { type: Number, default: 0 },
     likes: { type: Number, default: 0 },
-    techsPercents: { type: Object, default: {} },
+    repositoryTechnologiesPoints: { type: Object, default: {} },
     repoLink: { type: String, default: "" },
     favorite: { type: Boolean, default: false }
 }, { timestamps: true });

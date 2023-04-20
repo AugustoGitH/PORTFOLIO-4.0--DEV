@@ -1,23 +1,23 @@
 import * as S from "./styles"
 
-import { LADINGPAGE, ECOMMERCE, WEBAPP } from "../../../../../constants/typesProject"
 import { TProjectType } from "../../../../../types/Project"
 import { useEffect, useState } from "react"
-import Project from "./components/Project/indext"
+import Project from "./components/Project/index"
+import useProjectsPublic from "../../../../../stores/projectsPublic"
+import LoaderDefault from "../../../../../components/loaders/LoaderDefault"
+import orderPresentationOfProjects from "../../../../../utils/orderPresentationOfProjects"
 
 
-type TPropsFiltersTypes = {
-    onChange: (type: TProjectType | "all")=> void
-}
 
-const FiltersTypesProject = ({ onChange }: TPropsFiltersTypes)=>{
-    const [typeFilter, setTypeFilter] = useState<TProjectType | "all">("all")
+const FiltersTypesProject = ()=>{
+    const [typeFilter, setTypeFilter] = useState<TProjectType>("all")
+    const { filterProjects } = useProjectsPublic()
 
     useEffect(()=>{
-        onChange(typeFilter)
+        filterProjects(typeFilter)
     }, [typeFilter])
 
-    const handleClickPropsFil = (type: TProjectType | "all")=>({
+    const handleClickPropsFil = (type: TProjectType)=>({
         onClick: ()=>{ setTypeFilter(type) },
         className: typeFilter === type ? "mark-button-filter" : ""
     })
@@ -40,10 +40,30 @@ const FiltersTypesProject = ({ onChange }: TPropsFiltersTypes)=>{
     )
 }
 
-const ProjectsList = ({ type }: { type: TProjectType | "all" })=>{
+const ProjectsList = ()=>{
+    const { projectsOnScreen, isFetching, projectsData } = useProjectsPublic()
+    
     return (
         <S.ProjectsList>
-            <Project/>
+            {
+                orderPresentationOfProjects(projectsOnScreen)?.map(project=>(
+                    <Project key={project._id} project={project}/>
+                ))
+            }
+            {
+                isFetching && !projectsData ? (
+                    <div className="loader-projects">
+                        <LoaderDefault color="light"/>
+                    </div>
+                ): <></>
+            }
+            {
+                projectsData && projectsOnScreen.length === 0 ? (
+                    <div className="not-projects">
+                        <span>Nenhum projeto foi encontrado!</span>
+                    </div>
+                ): <></>
+            }
         </S.ProjectsList>
     )
 }
@@ -58,17 +78,11 @@ const ProjectsList = ({ type }: { type: TProjectType | "all" })=>{
 
 
 const PortfolioProjects = ()=>{
-    const [typeFilter, setTypeFilter] = useState<TProjectType | "all">("all")
-
-    const handleChangeFilter = (type: TProjectType | "all")=>{
-        setTypeFilter(type)
-    }
-
-    return (
+   return (
         <S.PortfolioProjects>
             <h1>Portfolio Projects</h1>
-            <FiltersTypesProject onChange={handleChangeFilter}/>
-            <ProjectsList type={typeFilter}/>
+            <FiltersTypesProject/>
+            <ProjectsList/>
         </S.PortfolioProjects>
     )
 }

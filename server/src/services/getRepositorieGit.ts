@@ -1,35 +1,48 @@
 import axios from "axios"
 import { TRepositorie } from "../types/Repositorie"
+import { URLUSER } from "../constants/github"
 
 type TTechsPercent = {
     [key: string]: number
 }
 
-type TGetRepositorieGit = {
-    repoLink: string,
-    techsPercent: TTechsPercent
-}
-
-const getRepositorieGit = async (idRepo: number): Promise<TGetRepositorieGit | null>  =>{
-    try{
-        const { data: repositories }: {data: TRepositorie[]} = await axios.get(`https://api.github.com/users/AugustoGitH/repos`, {
-            headers: {
-                Authorization: `token ${process.env.AUTORIZATION_TOKEN_GITHUB}`
-            }
-        })
-        const repositorie = repositories.find(repo=> repo.id === idRepo) || null
-        if(!repositorie) return null
-
-        const { data: technologiesUsed }: { data: TTechsPercent} = await axios.get(repositorie.languages_url)
-        return {
-            repoLink: repositorie.svn_url,
-            techsPercent: technologiesUsed
+const Repositorie = {
+    
+    async findAll() {
+        try{
+            const { data: repositories }: {data: TRepositorie[]} = await axios.get(URLUSER, {
+                headers: {
+                    Authorization: `token ${process.env.AUTORIZATION_TOKEN_GITHUB}`
+                }
+            })
+            return repositories
+        }catch(error){
+            console.log("Ocorreu um erro ao resgatar repositorios ------>" + error)
+            return null
         }
-    }catch(error){
-        console.log("Ocorreu um erro ao resgatar repositorie ------>" + error)
-        return null
+    },
+    async findOneById(id: number){
+        try{
+            const { data: repositories }: {data: TRepositorie[]} = await axios.get(URLUSER, {
+                headers: {
+                    Authorization: `token ${process.env.AUTORIZATION_TOKEN_GITHUB}`
+                }
+            })
+            return repositories.find(repo=> repo.id === id) || null
+        }catch(error){
+            console.log("Ocorreu um erro ao resgatar repositorios ------>" + error)
+            return null
+        }
+    },
+    async findTechnologies(languagesUrl: string){
+        try{
+            const { data: technologiesUsed }: { data: TTechsPercent} = await axios.get(languagesUrl)
+            return technologiesUsed
+        }catch(error){
+            console.log("Ocorreu um erro ao resgatar tecnologias usadas no repositorio ------>" + error)
+            return null
+        }
     }
-
 }
 
-export default getRepositorieGit
+export default Repositorie

@@ -4,6 +4,7 @@ import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
 import mongoose from 'mongoose'
 import routers from './app/routers'
+import path from 'path'
 
 dotenv.config()
 const app = express()
@@ -14,6 +15,18 @@ app.use(bodyParser.urlencoded({ limit: '9999999999mb', extended: true }))
 app.use(cookieParser())
 
 app.use(routers)
+
+if (process.env.NODE_ENV !== 'development') {
+  app.use(express.static(path.join(__dirname, '../client/dist')))
+  app.get('*', (req, res) => {
+    try {
+      res.sendFile(path.join(__dirname, '../client/dist/index.html'))
+    } catch (e) {
+      console.log(e)
+    }
+  })
+}
+
 
 app.listen(PORT, () => console.log(`-----------> Servidor rodando na porta ${PORT}!`))
 

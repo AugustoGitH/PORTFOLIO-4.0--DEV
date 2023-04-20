@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Routes, Route } from "react-router-dom"
 
+
 import PageNotFound from './pages/NotFound'
 import PageHome from "./pages/Home"
 import PageLogin from "./pages/Login"
@@ -15,11 +16,7 @@ function App() {
       <Routes>
         <Route path="*" element={<PageNotFound/>}/>
         <Route path="/" element={<PageHome/>}/>
-        <Route path="/login" element={
-          <PrivateRouter redirect='/painel' reverse>
-            <PageLogin/>
-          </PrivateRouter>
-        }/>
+        <Route path="/login" element={<PageLogin/>}/>
         <Route path="/painel" element={
           <PrivateRouter redirect='/'>
             <PagePainel/>

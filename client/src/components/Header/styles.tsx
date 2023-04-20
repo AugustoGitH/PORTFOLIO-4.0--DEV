@@ -42,6 +42,7 @@ const HeaderStyled = styled.header`
             a, button{
                 all: unset;
                 display: inline-block;
+                position: relative;
                 background-color: var(--color-background-light);
                 font-size: 1.3rem;
                 width: 40px;
@@ -58,6 +59,42 @@ const HeaderStyled = styled.header`
                     border-radius: 10%;
                 }
             }
+           
+            .button-github, .button-linkedin, .button-curriculum{
+                &:hover{
+                    &::after{
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+                &::after{
+                    position: absolute;
+                    width: 70px;
+                    font-size: .7rem;
+                    background-color: var(--color-dark);
+                    color: #fff;
+                    padding: .3rem;
+                    text-align: center;
+                    z-index: 15;
+                    border-radius: .3rem;
+                    bottom: -1.8rem;
+                    right: 0rem;
+                    transform: translateX(20px);
+                    opacity: 0;
+                    transition: .2s;
+                }
+            }
+            .button-github::after{
+                content: "Meu GitHub";
+            }
+            .button-linkedin::after{
+                content: "Meu Linkedin";
+            }
+            .button-curriculum::after{
+                content: "Baixar Currículo";
+                width: 85px;
+            }
+            
         }
     }
 `

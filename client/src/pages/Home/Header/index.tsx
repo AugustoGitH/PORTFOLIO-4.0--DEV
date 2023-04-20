@@ -1,6 +1,7 @@
 import * as S from "./styles"
 import imageProfile from "../../../assets/images/profile-01.png"
 import { Link } from "react-router-dom"
+import TechnologiesPercentageChart from "./components/TechnologiesPercentageChart"
 
 const Header = ()=>{
     return (
@@ -21,8 +22,16 @@ const Header = ()=>{
                     a diferentes projetos.
                 </p>
                 <nav>
-                    <a target="_blank" href="https://www.instagram.com/augusto_westphall/">Instagram <i className='bx bxl-instagram' ></i></a>
-                    <a target="_blank" href="">Facebook<i className='bx bxl-facebook' ></i></a>
+                    <a 
+                        title="Acesse meu instagram" 
+                        target="_blank" 
+                        href="https://www.instagram.com/augusto_westphall/"
+                    >Instagram <i className='bx bxl-instagram' ></i></a>
+                    <a 
+                        title="Acesse meu facebook" 
+                        target="_blank" 
+                        href="https://www.facebook.com/augusto.westphal.9/"
+                    >Facebook<i className='bx bxl-facebook' ></i></a>
                 </nav>
             </S.AboutMe>
             <S.TextProjectsGit>
@@ -34,9 +43,10 @@ const Header = ()=>{
                     <span><i className='bx bxs-doughnut-chart'></i></span>
                     <h2>Porcentagem das tecnologias usadas em meus projetos</h2>
                 </div>
+                <TechnologiesPercentageChart/>
             </S.PercentTechs>
 
-            <S.ContactMe>
+            <S.ContactMe id="contact">
                 <h3>Vamos conversar?</h3>
                 <h1>Contate-me</h1>
                 <p>
@@ -47,19 +57,19 @@ const Header = ()=>{
                 </p>
                 <ul>
                     <li>
-                        <a href="mailto:augustoc.westphal@gmail.com" target="_blank">
+                        <a title="Contate-me pelo email" href="mailto:augustoc.westphal@gmail.com" target="_blank">
                             <span>Email</span>
                             <i className='bx bxs-envelope' ></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://wa.me/5527997435139" target="_blank">
+                        <a title="Contate-me pelo whatsapp" href="https://wa.me/5527997435139" target="_blank">
                             <span>Whatsapp</span>
                             <i className='bx bxl-whatsapp' ></i>
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.linkedin.com/in/augusto-westphal-67b7b3230/" target="_blank">
+                        <a title="Contate-me pelo linkedin" href="https://www.linkedin.com/in/augusto-westphal-67b7b3230/" target="_blank">
                             <span>Linkedin</span>
                             <i className='bx bxl-linkedin-square' ></i>
                         </a>

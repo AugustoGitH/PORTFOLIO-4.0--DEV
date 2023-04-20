@@ -4,11 +4,28 @@ export const Body = styled.section`
   width: calc(100% - 400px);
   padding: 0 2rem;
   color: var(--color-light);
+  @media (max-width: 920px) {
+    width: 100%;
+    padding: 0rem 2rem 2rem 2rem ;
+  }
+  @media (max-width: 500px) {
+    width: 100%;
+    padding: 0rem .5rem .5rem .5rem ;
+  }
 `;
 export const Main = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 1040px) {
+    flex-direction: column-reverse;
+  }
+  @media (max-width: 920px) {
+    flex-direction: row-reverse;
+  }
+  @media (max-width: 650px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export const TechPresentation = styled.div`
@@ -17,6 +34,22 @@ export const TechPresentation = styled.div`
   justify-content: center;
   align-items: flex-end;
   text-align: end;
+  @media (max-width: 1040px) {
+    width: 100%;
+    align-items: flex-start;
+    text-align: start;
+  }
+  @media (max-width: 920px) {
+    width: auto;
+  }
+  @media (max-width: 650px) {
+    width: 100%;
+    align-items: flex-start;
+    text-align: start;
+  }
+  @media (max-width: 500px){
+    padding: 0 2rem;
+  }
   h3 {
     font-size: var(--font-size-small);
     text-transform: uppercase;
@@ -31,6 +64,9 @@ export const TechPresentation = styled.div`
   }
   article {
     margin: 3rem 0;
+    @media (max-width: 500px){
+        margin: 1.5rem 0;
+    }
     h2 {
       font-size: var(--font-size-medium);
       color: var(--color-yellow);
@@ -39,11 +75,23 @@ export const TechPresentation = styled.div`
     h1 {
       margin-top: -0.1rem;
       font-size: 3rem;
-      line-height: 3rem;
+      line-height: 3.4rem;
       position: relative;
       width: 100%;
       #sobrenome-ocult {
         display: none;
+        @media (max-width: 1040px) {
+            display: inline-block;
+        }
+        @media (max-width: 920px) {
+            display: none;
+        }
+        @media (max-width: 650px) {
+            display: inline-block;
+        }
+        @media (max-width: 500px){
+            display: none;
+        }
       }
     }
   }
@@ -78,10 +126,10 @@ export const TechPresentation = styled.div`
           top: 50%;
           transform: translateY(-50%);
           transition: 0.3s;
-          @media (max-width: 1100px) {
+          @media (max-width: 1180px) {
             right: -2px;
           }
-          @media (min-width: 1100px) {
+          @media (min-width: 1180px) {
             left: -2px;
           }
         }
@@ -128,6 +176,18 @@ export const ProfileImage = styled.div`
   padding-top: 4rem;
   margin-left: 10%;
   flex: none;
+  @media (max-width: 1040px) {
+    margin-left: 0;
+    margin-bottom: 2rem;
+  }
+  @media (max-width: 920px) {
+    margin-right: 10%;
+    margin-bottom: 0;
+  }
+  @media (max-width: 650px) {
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
   .profile-content {
     width: 300px;
     height: 300px;

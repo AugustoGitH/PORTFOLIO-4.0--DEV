@@ -13,25 +13,51 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
-const getRepositorieGit = (idRepo) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const { data: repositories } = yield axios_1.default.get(`https://api.github.com/users/AugustoGitH/repos`, {
-            headers: {
-                Authorization: `token ${process.env.AUTORIZATION_TOKEN_GITHUB}`
+const github_1 = require("../constants/github");
+const Repositorie = {
+    findAll() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data: repositories } = yield axios_1.default.get(github_1.URLUSER, {
+                    headers: {
+                        Authorization: `token ${process.env.AUTORIZATION_TOKEN_GITHUB}`
+                    }
+                });
+                return repositories;
+            }
+            catch (error) {
+                console.log("Ocorreu um erro ao resgatar repositorios ------>" + error);
+                return null;
             }
         });
-        const repositorie = repositories.find(repo => repo.id === idRepo) || null;
-        if (!repositorie)
-            return null;
-        const { data: technologiesUsed } = yield axios_1.default.get(repositorie.languages_url);
-        return {
-            repoLink: repositorie.svn_url,
-            techsPercent: technologiesUsed
-        };
+    },
+    findOneById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data: repositories } = yield axios_1.default.get(github_1.URLUSER, {
+                    headers: {
+                        Authorization: `token ${process.env.AUTORIZATION_TOKEN_GITHUB}`
+                    }
+                });
+                return repositories.find(repo => repo.id === id) || null;
+            }
+            catch (error) {
+                console.log("Ocorreu um erro ao resgatar repositorios ------>" + error);
+                return null;
+            }
+        });
+    },
+    findTechnologies(languagesUrl) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { data: technologiesUsed } = yield axios_1.default.get(languagesUrl);
+                return technologiesUsed;
+            }
+            catch (error) {
+                console.log("Ocorreu um erro ao resgatar tecnologias usadas no repositorio ------>" + error);
+                return null;
+            }
+        });
     }
-    catch (error) {
-        console.log("Ocorreu um erro ao resgatar repositorie ------>" + error);
-        return null;
-    }
-});
-exports.default = getRepositorieGit;
+};
+exports.default = Repositorie;

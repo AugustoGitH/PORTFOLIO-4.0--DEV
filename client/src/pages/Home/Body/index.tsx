@@ -3,6 +3,7 @@ import imgProfile from "../../../assets/images/profile-02.png"
 import TecnologiesInProjects from "./components/TecnologiesInProjects"
 import PortfolioProjects from "./components/PortfolioProjects"
 
+
 const Body = ()=>{
     return (
         <S.Body>
@@ -16,7 +17,7 @@ const Body = ()=>{
                         <h2>Meu nome é</h2>
                         <h1>
                             Augusto
-                            <span id="sobrenome-ocult"> C. Westphal</span>
+                            {" "}<span id="sobrenome-ocult"> Westphal</span>
                         </h1>
                     </article>
                     <div className="skills">

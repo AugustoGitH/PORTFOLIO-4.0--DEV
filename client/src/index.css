@@ -15,6 +15,7 @@
   --font-size-small: .9rem;
   --font-size-medium: 1.2rem;
   --font-size-large: 1.5rem;
+
 }
 
 * {
@@ -22,6 +23,17 @@
   padding: 0;
   box-sizing: border-box;
   list-style: none;
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+  background-color: #c9abab1a;
+}
+*::-webkit-scrollbar-thumb {
+  width: 100%;
+  height: 90px;
+  border-radius: 1rem;
+  background-color: #ffffff2c;
 }
 
 html{
@@ -32,4 +44,19 @@ body {
   background-color: var(--color-background-solid);
   color: var(--color-white);
   font-family: var(--font-Poppins);
+  overflow-x: hidden;
+}
+body::-webkit-scrollbar {
+  width: 5px;
+  background-color: #c9abab1a;
+}
+body::-webkit-scrollbar-thumb {
+  width: 100%;
+  height: 90px;
+  border-radius: 1rem;
+  background-color: #ffffff2c;
+}
+
+.overflowY-none{
+  overflow: hidden;
 }

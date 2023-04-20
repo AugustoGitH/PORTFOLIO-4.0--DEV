@@ -38,7 +38,7 @@ exports.adminRouters = [
         controller: Admin_1.default.updateProject
     },
     {
-        path: `${exports.baseRoute}/delete-project`,
+        path: `${exports.baseRoute}/delete-project/:idProject`,
         method: "delete",
         controller: Admin_1.default.deleteProject
     }
