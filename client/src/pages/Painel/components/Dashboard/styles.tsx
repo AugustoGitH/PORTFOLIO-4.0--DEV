@@ -7,7 +7,7 @@ export const Dashboard = styled.div`
     .dash-projects{
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1rem;
         margin-top: 1rem;
         li{
@@ -32,6 +32,7 @@ export const Dashboard = styled.div`
             span{
                 margin-top: 1rem;
                 display: flex;
+                align-items: center;
                 h4{
                     font-size: 1rem;
                     text-transform: uppercase;

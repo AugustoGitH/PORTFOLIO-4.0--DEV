@@ -59,7 +59,7 @@ export const FiltersTypesProject = styled.ul`
 
 export const ProjectsList = styled.ul`
   width: 100%;
-  max-height: 700px ;
+  max-height: calc(((200px + 3rem) * 3) + (3rem * 3)) ;
   overflow: auto;
   margin-top: 3rem;
   display: flex;

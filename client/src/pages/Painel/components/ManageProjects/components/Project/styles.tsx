@@ -5,17 +5,35 @@ import animationsPresence from "../../../../../../animations/presence";
 
 export const Project = styled.li`
   width: 100%;
-  height: 500px;
   position: relative;
+  padding-bottom: 3rem;
   .sub-project, .sup-project{
     width: 100%;
   }
+  .sup-project{
+    width: 100%;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
   .sub-project{
-    height: 45%;
+    width: 100%;
+    height: 200px;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     gap: 2rem;
+    @media (max-width: 890px) {
+      gap: 1rem;
+    }
+    @media (max-width: 770px) {
+      flex-direction: column;
+      height: 800px;
+    }
+    @media (max-width: 500px) {
+      height: 700px;
+    }
     .form-inputs-edit{
       width: calc(100% - 30% - 2rem - 80px);
       height: 100%;
@@ -23,14 +41,12 @@ export const Project = styled.li`
       flex-direction: column;
       justify-content: center;
       gap: 1rem;
+      @media (max-width: 770px) {
+        width: 100%;
+        height: auto;
+        margin: 2rem 0;
+      }
     }
-  }
-  .sup-project{
-    height: 60%;
-    padding-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
   }
   .buttons-control-edit{
     position: absolute;
@@ -115,6 +131,7 @@ export const InputEdit = styled.div`
 
 
 export const DisplayPositions = styled.div`
+  flex: none; 
   width: 40px;
   height: 100%;
   background-color: var(--color-background-light);
@@ -122,11 +139,20 @@ export const DisplayPositions = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 770px) {
+    width: 100%;
+    height: 40px;
+  }
   ul{
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    @media (max-width: 770px) {
+      flex-direction: row;
+      width: 100%;
+      height: auto;
+    }
     li{
       font-size: 1.2rem;
       color: #ffffff7d;
@@ -148,6 +174,7 @@ export const DisplayPositions = styled.div`
 
 
 export const ControlButtons = styled.div`
+  flex: none;
   width: 40px;
   height: 100%;
   background-color: var(--color-background-light);
@@ -156,10 +183,23 @@ export const ControlButtons = styled.div`
   align-items: flex-start;
   justify-content: center;
   padding: 1rem 0;
+  @media (max-width: 770px) {
+    width: 100%;
+    height: 50px;
+    padding: 0;
+    align-items: center;
+  }
   ul{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: .2rem;
+    @media (max-width: 770px) {
+      width: 100%;
+      flex-direction: row;
+      gap: 2rem;
+    }
     li{
       i{
         font-size: 1.3rem;
@@ -228,6 +268,13 @@ export const ControlButtons = styled.div`
 export const ImagesProject = styled.div`
   width: 30%;
   height: 100%;
+  @media (max-width: 770px) {
+    width: 100%;
+    height: 40%;
+  }
+  @media (max-width: 500px) {
+    height: 30%;
+  }
   .cover{
     width: 100%;
     height: 70%;

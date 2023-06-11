@@ -2,12 +2,16 @@ import styled from "styled-components";
 import animationsPresence from "../../animations/presence";
 
 export const InputImageContainer = styled.div`
-  width: 100%;
+  width: 350px;
+  @media (max-width: 400px) {
+    width: 100%;
+  }
   .button-show-selected-images{
     all: unset;
+    width: 100%;
     background-color: var(--color-yellow);
     color: var(--color-dark);
-    padding: .6rem 1rem;
+    padding: .6rem 0;
     border-radius: .5rem;
     cursor: pointer;
     font-size: .9rem;
@@ -15,14 +19,43 @@ export const InputImageContainer = styled.div`
     transition: .2s;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+    gap: .4rem;
     i{
-      margin-right: 1rem;
       font-size: 1.3rem;
     }
     &:hover{
       background-color: transparent;
       color: var(--color-yellow);
+    }
+  }
+  .image-showcase{
+    margin-top: 1rem;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: .5rem;
+    
+    li{
+      width: 100%;
+      height: 40px;
+      overflow: hidden;
+      border-radius: .4rem;
+      background-color: #ffffff2a;
+      border: 1px solid #ffffff19;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      i{
+        font-size: 1.3rem;
+        color: #ffffff93;
+      }
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
   .popup-selected-images{
@@ -38,7 +71,11 @@ export const InputImageContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 910px) {
+      padding: 1rem;
+    }
     .card{
+      width: 700px;
       background-color: var( --color-background-solid);
       padding: 5rem 3rem;
       ${animationsPresence.scale};
@@ -46,6 +83,10 @@ export const InputImageContainer = styled.div`
       box-shadow: 0 0 20px #00000029;
       border-radius: 1rem;
       position: relative;
+      @media (max-width: 910px) {
+        width: 100%;
+        padding: 5rem 1rem;
+      }
       .button-close-popup{
         all: unset;
         color: var(--color-yellow);
@@ -68,7 +109,10 @@ export const InputImageContainer = styled.div`
         flex-direction: column;
         gap: 1rem;
         overflow-y: auto;
-        max-height: 300px;
+        max-height: calc(300px + 1rem);
+        @media (max-width: 530px) {
+          max-height: calc(400px + 1rem);
+        }
       }
     }
   }
@@ -76,10 +120,11 @@ export const InputImageContainer = styled.div`
 `
 
 export const InputImage = styled.div`
+   width: 100%;
   label{
           background-color: var(--color-background-light);
           display: flex;
-          width: 700px;
+          width: 100%;
           height: 300px;
           border-radius: .6rem;
          
@@ -88,7 +133,9 @@ export const InputImage = styled.div`
           flex-direction: column;
           position: relative;
           cursor: default;
-          overflow: hidden;
+          @media (max-width: 530px) {
+            height: 200px;
+          }
           &:hover .image-icon{
             transform: scale(1.3);
           }

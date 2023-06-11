@@ -251,7 +251,7 @@ export const Description = styled.div`
           font-size: .6rem;
           pointer-events: none;
           bottom: -1.9rem;
-          left: -1.4rem;
+          left: -1.6rem;
           transform: translateY(-15px);
           opacity: 0;
           transition: .2s;

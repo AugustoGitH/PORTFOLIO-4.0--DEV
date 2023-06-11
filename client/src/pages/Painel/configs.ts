@@ -1,63 +1,77 @@
+import { TProjectTech, TProjectType } from "../../types/Project";
 
+interface ITypeProjectOptions {
+  label: string;
+  value: TProjectType;
+}
 
-
-export const optionsTypeProject = [
-  { 
+export const optionsTypeProject: ITypeProjectOptions[] = [
+  {
     label: "All",
-    value: "all"
+    value: "all",
   },
-  { 
+  {
     label: "Lading Page",
-    value: "lading page"
+    value: "lading page",
   },
-  { 
+  {
     label: "Web App",
-    value: "web app"
+    value: "web app",
   },
-  { 
+  {
     label: "E-Commerce",
-    value: "e-commerce"
+    value: "e-commerce",
   },
-]
-export const optionsTechProject = [
-  { 
+];
+
+interface ITechProjectOptions {
+  label: string;
+  value: TProjectTech;
+}
+
+export const optionsTechProject: ITechProjectOptions[] = [
+  {
     label: "HTML5",
-    value: "html"
+    value: "html5",
   },
-  { 
+  {
     label: "CSS3",
-    value: "css"
+    value: "css3",
   },
-  { 
+  {
     label: "JavaScript",
-    value: "javascript"
+    value: "javascript",
   },
-  { 
+  {
     label: "Firebase",
-    value: "firebase"
+    value: "firebase",
   },
-  { 
+  {
     label: "NodeJS",
-    value: "nodejs"
+    value: "nodejs",
   },
-  { 
+  {
     label: "Bootstrap",
-    value: "bootstrap"
+    value: "bootstrap",
   },
-  { 
+  {
     label: "MongoDB",
-    value: "mongodb"
+    value: "mongodb",
   },
-  { 
+  {
     label: "SASS",
-    value: "sass"
+    value: "sass",
   },
-  { 
+  {
     label: "TypeScript",
-    value: "typescript"
+    value: "typescript",
   },
-  { 
+  {
     label: "ReactJS",
-    value: "reactjs"
+    value: "reactjs",
   },
-]
+  {
+    label: "NextJS",
+    value: "nextjs",
+  },
+];

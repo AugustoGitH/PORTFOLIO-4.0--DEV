@@ -5,6 +5,7 @@ import animationsPresence from "../../../../animations/presence";
 
 
 export const SearchRepos = styled.div`
+
   width: 100%;
   padding: 5rem 0;
   h4{
@@ -18,6 +19,9 @@ export const InputSearch = styled.div`
   margin-top: 2rem;
   width: 400px;
   line-height: .5rem;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
   label{
     color: #ffffffd3;
     font-size: 0.9em;
@@ -85,6 +89,9 @@ export const ListRepos = styled.ul`
     margin-bottom: 1rem;
     background-color: var(--color-background-light);
     ${animationsPresence.translateRight};
+    @media (max-width: 420px) {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
     p{
       color: #ffffffd3;
       span{

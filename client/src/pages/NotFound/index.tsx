@@ -1,7 +1,13 @@
+import { Link } from "react-router-dom"
+import * as S from "./styles"
+
 
 const PageNotFound = ()=>{
     return (
-        <h1>Page not Found</h1>
+        <S.PageNotFound>
+            <h1>Página não encontrada</h1>
+            <Link to="/">Voltar para a home</Link>
+        </S.PageNotFound>
     )
 }
 

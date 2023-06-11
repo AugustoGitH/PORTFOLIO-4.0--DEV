@@ -9,16 +9,16 @@ import orderPresentationOfProjects from "../../../../../utils/orderPresentationO
 
 
 
-const FiltersTypesProject = ()=>{
+const FiltersTypesProject = () => {
     const [typeFilter, setTypeFilter] = useState<TProjectType>("all")
     const { filterProjects } = useProjectsPublic()
 
-    useEffect(()=>{
+    useEffect(() => {
         filterProjects(typeFilter)
     }, [typeFilter])
 
-    const handleClickPropsFil = (type: TProjectType)=>({
-        onClick: ()=>{ setTypeFilter(type) },
+    const handleClickPropsFil = (type: TProjectType) => ({
+        onClick: () => { setTypeFilter(type) },
         className: typeFilter === type ? "mark-button-filter" : ""
     })
 
@@ -40,29 +40,29 @@ const FiltersTypesProject = ()=>{
     )
 }
 
-const ProjectsList = ()=>{
+const ProjectsList = () => {
     const { projectsOnScreen, isFetching, projectsData } = useProjectsPublic()
-    
+
     return (
         <S.ProjectsList>
             {
-                orderPresentationOfProjects(projectsOnScreen)?.map(project=>(
-                    <Project key={project._id} project={project}/>
+                orderPresentationOfProjects(projectsOnScreen)?.map(project => (
+                    <Project key={project._id} project={project} />
                 ))
             }
             {
                 isFetching && !projectsData ? (
                     <div className="loader-projects">
-                        <LoaderDefault color="light"/>
+                        <LoaderDefault color="light" />
                     </div>
-                ): <></>
+                ) : <></>
             }
             {
                 projectsData && projectsOnScreen.length === 0 ? (
                     <div className="not-projects">
                         <span>Nenhum projeto foi encontrado!</span>
                     </div>
-                ): <></>
+                ) : <></>
             }
         </S.ProjectsList>
     )
@@ -77,12 +77,12 @@ const ProjectsList = ()=>{
 
 
 
-const PortfolioProjects = ()=>{
-   return (
+const PortfolioProjects = () => {
+    return (
         <S.PortfolioProjects>
             <h1>Portfolio Projects</h1>
-            <FiltersTypesProject/>
-            <ProjectsList/>
+            <FiltersTypesProject />
+            <ProjectsList />
         </S.PortfolioProjects>
     )
 }

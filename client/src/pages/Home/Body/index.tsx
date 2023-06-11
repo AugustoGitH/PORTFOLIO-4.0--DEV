@@ -1,16 +1,16 @@
 import * as S from "./styles"
-import imgProfile from "../../../assets/images/profile-02.png"
+import imgProfile from "../../../assets/images/profile-02.webp"
 import TecnologiesInProjects from "./components/TecnologiesInProjects"
 import PortfolioProjects from "./components/PortfolioProjects"
 
 
-const Body = ()=>{
+const Body = () => {
     return (
         <S.Body>
             <S.Main>
                 <S.TechPresentation>
                     <h3>
-                        DEVLOPER FULL-STACK
+                        DEVELOPER FULL-STACK
                         <i className='bx bxs-hot' ></i>
                     </h3>
                     <article>
@@ -23,8 +23,8 @@ const Body = ()=>{
                     <div className="skills">
                         <p>Também sou</p>
                         <ul>
-                            <li>Web <br/>Designer</li>
-                            <li>Graphic <br/>Designer</li>
+                            <li>Web <br />Designer</li>
+                            <li>Graphic <br />Designer</li>
                         </ul>
                     </div>
                     <a href="#contact">
@@ -34,12 +34,12 @@ const Body = ()=>{
                 </S.TechPresentation>
                 <S.ProfileImage>
                     <div className="profile-content">
-                        <img src={imgProfile} alt="imagem-de-perfil-2"/>
+                        <img src={imgProfile} alt="imagem-de-perfil-2" />
                     </div>
                 </S.ProfileImage>
             </S.Main>
-            <TecnologiesInProjects/>
-            <PortfolioProjects/>
+            <TecnologiesInProjects />
+            <PortfolioProjects />
         </S.Body>
     )
 }
