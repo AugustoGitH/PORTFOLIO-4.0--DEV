@@ -1,0 +1,15 @@
+export type TRouteAPIAdmin =
+  | "CREATE_PROJECT"
+  | "GET_PROJECTS"
+  | "GET_REPOSITORIES"
+  | "FAVORITE_PROJECT"
+  | "RELOAD_REPO_PROJECT"
+  | "UPDATE_PROJECT"
+  | "DELETE_PROJECT";
+
+export type TRouteAPIPublic =
+  | "GET_PROJECTS"
+  | "LOGIN"
+  | "VERIFY_CREDENTIAL"
+  | "VIEW_PROJECT"
+  | "LIKE_PROJECT";

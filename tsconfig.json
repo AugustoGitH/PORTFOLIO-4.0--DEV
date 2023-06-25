@@ -3,20 +3,22 @@
     "client"
   ],
   "include": [
-    "server/src"
+    "./server/src"
   ],
   "compilerOptions": {
     "resolveJsonModule": true,
     "noImplicitAny": false,
-    "target": "es2016",                                
-    "lib": ["es6"],                                                    
-    "module": "commonjs",                               
-    "outDir": "./server/dist",  
-    "rootDir": "./server/src",                               
-    "removeComments": true,                          
-    "esModuleInterop": true,                            
-    "forceConsistentCasingInFileNames": true,          
+    "target": "es2016",
+    "lib": [
+      "es6"
+    ],
+    "module": "commonjs",
+    "outDir": "./server/dist",
+    "rootDir": "./server/src",
+    "removeComments": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "strictNullChecks": false                               
+    "strictNullChecks": false
   }
 }

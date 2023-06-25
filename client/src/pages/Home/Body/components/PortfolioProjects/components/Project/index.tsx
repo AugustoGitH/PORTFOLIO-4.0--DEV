@@ -4,34 +4,34 @@ import { TProject } from "../../../../../../../types/Project";
 import ImagesCover from "./components/ImagesCover";
 import { useState } from "react";
 import * as S from "./styles";
-import likeProjectService from "../../../../../../../services/Public/likeProject";
-import viewProjectService from "../../../../../../../services/Public/viewProject";
+import likeProjectService from "../../../../../../../services/authLevel/Public/likeProject";
+import viewProjectService from "../../../../../../../services/authLevel/Public/viewProject";
 
 
 
-const Project = ({ project }: { project: TProject}) => {
+const Project = ({ project }: { project: TProject }) => {
   const likedProjects: string[] = JSON.parse(localStorage.getItem(LIKEDPROJECTS) || "[]")
-  const [ isLiked, setIsLiked ] = useState(likedProjects.includes(project._id))
+  const [isLiked, setIsLiked] = useState(likedProjects.includes(project._id))
   const [countLikes, setCountLikes] = useState(project.likes)
   const [countViews, setCountViews] = useState(project.views)
 
-  const handleClickLikedProject = ()=>{
+  const handleClickLikedProject = () => {
     const likedProjects: string[] = JSON.parse(localStorage.getItem(LIKEDPROJECTS) || "[]")
-    if(likedProjects.includes(project._id)){
-      localStorage.setItem(LIKEDPROJECTS, JSON.stringify(likedProjects.filter(idProject=> idProject !== project._id )))
+    if (likedProjects.includes(project._id)) {
+      localStorage.setItem(LIKEDPROJECTS, JSON.stringify(likedProjects.filter(idProject => idProject !== project._id)))
       setIsLiked(false)
-      setCountLikes(prevCounterLikes=> prevCounterLikes !== 0 ? prevCounterLikes - 1 : 0)
+      setCountLikes(prevCounterLikes => prevCounterLikes !== 0 ? prevCounterLikes - 1 : 0)
       likeProjectService(project._id, "desfavorite")
-    }else{
+    } else {
       localStorage.setItem(LIKEDPROJECTS, JSON.stringify([...likedProjects, project._id]))
       setIsLiked(true)
-      setCountLikes(prevCounterLikes=> prevCounterLikes + 1)
+      setCountLikes(prevCounterLikes => prevCounterLikes + 1)
       likeProjectService(project._id, "favorite")
     }
   }
 
-  const handleClickViewProject = ()=>{
-    setCountViews(prevCounterViews=> prevCounterViews + 1)
+  const handleClickViewProject = () => {
+    setCountViews(prevCounterViews => prevCounterViews + 1)
     viewProjectService(project._id)
   }
 
@@ -46,7 +46,7 @@ const Project = ({ project }: { project: TProject}) => {
       <S.Description>
         <ul className="technologies">
           {
-            project.technologiesUsed.map((tech, index)=>(
+            project.technologiesUsed.map((tech, index) => (
               <li key={index}>{tech}</li>
             ))
           }
@@ -56,7 +56,7 @@ const Project = ({ project }: { project: TProject}) => {
         <nav>
           {
             project.websiteLink && (
-              <a href={project.websiteLink } target="_blank" onClick={handleClickViewProject}>
+              <a href={project.websiteLink} target="_blank" onClick={handleClickViewProject}>
                 Visitar
                 <i className="bx bxs-book-content"></i>
               </a>
@@ -64,7 +64,7 @@ const Project = ({ project }: { project: TProject}) => {
           }
           {
             project.videoLink && (
-              <a href={project.videoLink } target="_blank" onClick={handleClickViewProject}>
+              <a href={project.videoLink} target="_blank" onClick={handleClickViewProject}>
                 Preview
                 <i className="bx bx-play-circle"></i>
               </a>

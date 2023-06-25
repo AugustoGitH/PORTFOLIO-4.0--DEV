@@ -1,6 +1,5 @@
 import { TProjectCreationProcess } from "../../../../types/Project";
 
-
 export const modelNewProject: TProjectCreationProcess = {
   name: "",
   type: "",
@@ -10,6 +9,7 @@ export const modelNewProject: TProjectCreationProcess = {
   repoId: null,
   images: {
     cover: null,
-    images: []
-  }
-}
+    images: [],
+  },
+  repoLink: "",
+};

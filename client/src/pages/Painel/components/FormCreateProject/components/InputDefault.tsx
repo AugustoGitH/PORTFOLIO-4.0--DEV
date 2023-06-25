@@ -1,20 +1,16 @@
 
 import * as S from "../styles"
-import { useRef, RefObject } from "react"
+import { useRef, RefObject, ComponentProps } from "react"
 
-type TPropsInput = {
+interface IInputDefaultProps extends ComponentProps<"input"> {
   label?: string,
-  onChange?: (e: any)=> void,
-  value?: string,
-  onFocus?: ()=> void,
-  onBlur?: ()=> void,
-  onClick?: ()=> void
 }
 
-const InputDefault = ( {label, onClick, ...rest}: TPropsInput )=>{
+
+const InputDefault = ({ label, onClick, ...restPropsInput }: IInputDefaultProps) => {
   return (
     <S.InputDefault onClick={onClick}>
-      <input required type="text" {...rest}/>
+      <input required type="text" {...restPropsInput} />
       <span>{label}</span>
       <i></i>
     </S.InputDefault>

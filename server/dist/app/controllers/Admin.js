@@ -30,29 +30,36 @@ exports.default = {
     createProject(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const newProject = req.body;
-            const { repoId } = newProject;
+            const { repoId, repoLink } = newProject;
             const { error } = (0, Project_2.SchemaProject)(req.body);
             if (error)
                 return res.status(404).send({
-                    message: error.message
+                    message: error.message,
                 });
             const repositorie = repoId ? yield getRepositorieGit_1.default.findOneById(repoId) : null;
-            const techsRepo = repositorie ? yield getRepositorieGit_1.default.findTechnologies(repositorie.languages_url) : null;
-            const project = Object.assign(Object.assign({}, newProject), (repositorie && techsRepo ?
-                {
+            const techsRepo = repositorie
+                ? yield getRepositorieGit_1.default.findTechnologies(repositorie.languages_url)
+                : null;
+            const project = Object.assign(Object.assign({}, newProject), (repositorie && techsRepo && !repoLink
+                ? {
                     repoLink: repositorie.svn_url,
-                    repositoryTechnologiesPoints: techsRepo
-                } : {}));
+                    repositoryTechnologiesPoints: techsRepo,
+                }
+                : repoLink
+                    ? {
+                        repoLink,
+                    }
+                    : {}));
             try {
                 new Project_1.default(project).save();
                 res.status(200).send({
-                    message: 'Projeto criado com sucesso!'
+                    message: "Projeto criado com sucesso!",
                 });
             }
             catch (error) {
                 console.log(`Ocorreu um erro ao criar um projeto! --------> ${error}`);
                 res.status(500).send({
-                    message: 'Ocorreu um erro interno no servidor ao tentar criar o seu projeto.'
+                    message: "Ocorreu um erro interno no servidor ao tentar criar o seu projeto.",
                 });
             }
         });
@@ -67,14 +74,14 @@ exports.default = {
             try {
                 const projects = yield Project_1.default.find({});
                 res.status(200).send({
-                    message: 'Projetos resgatados com sucesso!',
-                    data: projects
+                    message: "Projetos resgatados com sucesso!",
+                    data: projects,
                 });
             }
             catch (error) {
                 console.log(`Ocorreu um erro ao resgatar projetos! --------> ${error}`);
                 res.status(500).send({
-                    message: 'Ocorreu um erro interno no servidor ao buscar seus projetos.'
+                    message: "Ocorreu um erro interno no servidor ao buscar seus projetos.",
                 });
             }
         });
@@ -82,24 +89,30 @@ exports.default = {
     updateProject(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const _a = req.body, { idProject } = _a, valuesEdited = __rest(_a, ["idProject"]);
-            const repositorie = valuesEdited.repoId ? yield getRepositorieGit_1.default.findOneById(valuesEdited.repoId) : null;
-            const techsRepo = repositorie ? yield getRepositorieGit_1.default.findTechnologies(repositorie.languages_url) : null;
+            const repositorie = valuesEdited.repoId
+                ? yield getRepositorieGit_1.default.findOneById(valuesEdited.repoId)
+                : null;
+            const techsRepo = repositorie
+                ? yield getRepositorieGit_1.default.findTechnologies(repositorie.languages_url)
+                : null;
             try {
                 Promise.all([
                     Project_1.default.updateMany({ orderOfFive: valuesEdited.orderOfFive }, { orderOfFive: 0 }),
-                    Project_1.default.findByIdAndUpdate(idProject, Object.assign(Object.assign({}, valuesEdited), (repositorie && techsRepo ? {
-                        repoLink: repositorie.svn_url,
-                        repositoryTechnologiesPoints: techsRepo
-                    } : {})))
+                    Project_1.default.findByIdAndUpdate(idProject, Object.assign(Object.assign({}, valuesEdited), (repositorie && techsRepo
+                        ? {
+                            repoLink: repositorie.svn_url,
+                            repositoryTechnologiesPoints: techsRepo,
+                        }
+                        : {}))),
                 ]);
                 res.status(200).send({
-                    message: "Projeto atualizado com sucesso!"
+                    message: "Projeto atualizado com sucesso!",
                 });
             }
             catch (error) {
                 console.log(error);
                 res.status(500).send({
-                    message: "Erro interno no servidor ao atualizar o processo!"
+                    message: "Erro interno no servidor ao atualizar o processo!",
                 });
             }
         });
@@ -109,13 +122,12 @@ exports.default = {
             const repositories = yield getRepositorieGit_1.default.findAll();
             res.status(200).send({
                 message: "Repositorios resgatados com sucesso!",
-                data: { repositories }
+                data: { repositories },
             });
         });
     },
     favoriteProject(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-        });
+        return __awaiter(this, void 0, void 0, function* () { });
     },
     deleteProject(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -123,19 +135,18 @@ exports.default = {
             try {
                 yield Project_1.default.deleteOne({ _id: idProject });
                 res.status(200).send({
-                    message: "Projeto deletado com sucesso!"
+                    message: "Projeto deletado com sucesso!",
                 });
             }
             catch (error) {
                 console.log(error);
                 res.status(500).send({
-                    message: "Ocorreu um erro interno no servidor ao deletar projeto!"
+                    message: "Ocorreu um erro interno no servidor ao deletar projeto!",
                 });
             }
         });
     },
     reloadRepoProject(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-        });
-    }
+        return __awaiter(this, void 0, void 0, function* () { });
+    },
 };

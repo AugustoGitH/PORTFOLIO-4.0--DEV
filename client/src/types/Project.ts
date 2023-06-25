@@ -1,68 +1,31 @@
-import { TImageSelected } from "../components/InputImages/types";
-import { Document } from "mongoose";
+export type TProjectType = 'all' | 'e-commerce' | 'web app' | 'lading page';
 
-export type TProjectTypeCreationProcess =
-  | "all"
-  | "e-commerce"
-  | "web app"
-  | "lading page"
-  | "";
+export type TProjectTechnologiesUsed =
+  | 'html5'
+  | 'css3'
+  | 'javascript'
+  | 'firebase'
+  | 'nodejs'
+  | 'bootstrap'
+  | 'mongodb'
+  | 'sass'
+  | 'typescript'
+  | 'reactjs'
+  | 'nextjs';
 
-export type TProjectType = "all" | "e-commerce" | "web app" | "lading page";
-
-export type TProjectTech =
-  | "html5"
-  | "css3"
-  | "javascript"
-  | "firebase"
-  | "nodejs"
-  | "bootstrap"
-  | "mongodb"
-  | "sass"
-  | "typescript"
-  | "reactjs"
-  | "nextjs";
-
-export interface TProjectImagesCreationProcess {
-  cover: string | null;
-  images: string[];
-}
-
-export type TProjectCreationProcess = {
-  type: TProjectTypeCreationProcess;
-  images: TProjectImagesCreationProcess;
-  name: string;
-  websiteLink: string;
-  videoLink: string;
-  repoId: number | null;
-  technologiesUsed: TProjectTech[];
-};
-
-export interface TProjectImagesSendByClient {
+export interface IProjectImages {
   cover: string;
   images: string[];
 }
 
-export type TProjectSendByClient = {
-  type: TProjectTypeCreationProcess;
-  images: TProjectImagesSendByClient;
-  name: string;
-  websiteLink: string;
-  videoLink: string;
-  repoId: number | null;
-  technologiesUsed: TProjectTech[];
-};
-
-export type TRepositoryTechnologiesPoints = {
-  [key: string]: number;
-};
+export type TRepositoryTechnologiesPoints = Record<string, number>;
 
 export type TProject = {
   orderOfFive: number;
   name: string;
-  images: TProjectImagesSendByClient;
+  images: IProjectImages;
   type: TProjectType;
-  technologiesUsed: TProjectTech[];
+  technologiesUsed: TProjectTechnologiesUsed[];
   websiteLink: string;
   videoLink: string;
   repoId: number | null;

@@ -21,7 +21,7 @@ export const Project = styled.li`
     width: 100%;
     height: 200px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
     gap: 2rem;
     @media (max-width: 890px) {
@@ -32,7 +32,7 @@ export const Project = styled.li`
       height: 800px;
     }
     @media (max-width: 500px) {
-      height: 700px;
+      height: 600px;
     }
     .form-inputs-edit{
       width: calc(100% - 30% - 2rem - 80px);
@@ -60,7 +60,7 @@ export const Project = styled.li`
       ${animationsPresence.scale};
       color: #ffffffcc;
       padding: .6rem 1rem;
-      font-size: 1.1rem;
+      font-size: 1rem;
       border-radius: .4rem;
       cursor: pointer;
       display: flex;
@@ -68,13 +68,18 @@ export const Project = styled.li`
       justify-content: center;
       border: 1.2px solid #ffffff38;
       transition: .2s;
+      gap: .5rem;
+      line-height: 1.2rem;
+      @media (max-width: 500px) {
+        font-size: .8rem;
+        line-height: 1rem;
+      }
       &:hover{
         color: var(--color-yellow);
         border: 1.2px solid #cebe0838;
       }
       i{
         font-size: 1.4rem;
-        margin-left: 1rem;
       }
     }
   }

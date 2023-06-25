@@ -1,4 +1,4 @@
-module.exports =  {
+module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
   env: {
@@ -11,17 +11,19 @@ module.exports =  {
     'standard',
     'plugin:@typescript-eslint/recommend'
   ],
-  overrides: [
-  ],
+  overrides: [],
   parserOptions: {
     project: './tsconfig.json',
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
   rules: {
-    "max-len": ["error", { "code": 100 }],
-    "@typescript-eslint/no-explicit-any": ["error", {
-      "allowAny": true
-    }]
+    'max-len': ['error', { code: 100 }],
+    '@typescript-eslint/no-explicit-any': [
+      'error',
+      {
+        allowAny: true
+      }
+    ]
   }
-}
+};

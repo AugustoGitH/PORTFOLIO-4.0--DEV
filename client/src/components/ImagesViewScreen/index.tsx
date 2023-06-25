@@ -8,25 +8,25 @@ type TVierScreen = {
 }
 type PropsImagesViewScreen = {
     viewScreen: TVierScreen,
-    onClose: ()=> void,
+    onClose: () => void,
     images: string[]
 }
 
 
 
-const ImagesViewScreen = ({ viewScreen, onClose, images }: PropsImagesViewScreen)=>{
-    const [ focusImage, setFocusImage ] = useState(viewScreen.mainImage)
-    const [ notFocused, setNotFocused ] = useState<string[] | []>(images.filter(img=> img !== viewScreen.mainImage))
+const ImagesViewScreen = ({ viewScreen, onClose, images }: PropsImagesViewScreen) => {
+    const [focusImage, setFocusImage] = useState(viewScreen.mainImage)
+    const [notFocused, setNotFocused] = useState<string[] | []>(images.filter(img => img !== viewScreen.mainImage))
 
-    useEffect(()=>{
+    useEffect(() => {
         setFocusImage(viewScreen.mainImage)
-        setNotFocused(images.filter(img=> img !== viewScreen.mainImage))
+        setNotFocused(images.filter(img => img !== viewScreen.mainImage))
 
-        window.document.body.classList[viewScreen.show ? "add" : "remove"]
+        document.body.classList[viewScreen.show ? "add" : "remove"]("overflowY-none")
     }, [viewScreen])
 
-    const handleFocusImage = (image: string)=>{
-        setNotFocused([...images.filter(img=> img !== image && img !== focusImage ), focusImage])
+    const handleFocusImage = (image: string) => {
+        setNotFocused([...images.filter(img => img !== image && img !== focusImage), focusImage])
         setFocusImage(image)
     }
 
@@ -36,19 +36,19 @@ const ImagesViewScreen = ({ viewScreen, onClose, images }: PropsImagesViewScreen
                 <button className="button-close" onClick={onClose}><i className='bx bx-x' ></i></button>
                 <ul className="view-display-statistics"></ul>
                 <div className="image-cover">
-                    <img src={focusImage}/>
+                    <img src={focusImage} />
                 </div>
                 {
                     notFocused.length > 0 && (
                         <ul className="images-list">
-                        {
-                            notFocused.map((img, index)=>(
-                                <li key={index} onClick={()=> handleFocusImage(img)}>
-                                    <img src={img}/>
-                                </li>
-                            ))
-                        }
-                </ul>
+                            {
+                                notFocused.map((img, index) => (
+                                    <li key={index} onClick={() => handleFocusImage(img)}>
+                                        <img src={img} />
+                                    </li>
+                                ))
+                            }
+                        </ul>
                     )
                 }
             </div>

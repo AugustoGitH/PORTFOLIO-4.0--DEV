@@ -1,20 +1,34 @@
-import { TProject } from "../types/Project"
+import { TProject } from '../types/Project';
 
+const orderPresentationOfProjects = (
+  projects: TProject[] | null | undefined
+): TProject[] | null => {
+  if (!projects || projects.length === 0) return null;
 
-const orderPresentationOfProjects = (projects: TProject[] | null | undefined): (TProject[] | null)=>{
-  if(!projects || projects.length === 0) return null
+  const projectsIncludesOrderOfFive = projects.filter(
+    (project) => project.orderOfFive > 0
+  );
 
-  const projectsIncludesOrderOfFive = projects.filter(project=> project.orderOfFive > 0)
+  const projectsIncludesInTheFiveSalaries = projectsIncludesOrderOfFive.sort(
+    (a, b) => a.orderOfFive + b.orderOfFive
+  );
 
-  const projectsIncludesInTheFiveSalaries = projectsIncludesOrderOfFive.sort((a, b)=> a.orderOfFive + b.orderOfFive )
+  const modelFinal = [
+    null,
+    null,
+    null,
+    null,
+    null,
+    ...projects.filter((project) => project.orderOfFive === 0)
+  ] as TProject[];
 
-  const modelFinal = [null, null, null, null, null, ...projects.filter(project=> project.orderOfFive === 0)] as TProject[]
+  projectsIncludesInTheFiveSalaries.forEach(
+    (project) => (modelFinal[project.orderOfFive - 1] = project)
+  );
 
-  projectsIncludesInTheFiveSalaries.forEach(project=> modelFinal[project.orderOfFive - 1] = project)
-  
-  const modelFinalTrated = modelFinal.filter(Boolean)
+  const modelFinalTrated = modelFinal.filter(Boolean);
 
-  return modelFinalTrated 
-}
+  return modelFinalTrated;
+};
 
-export default orderPresentationOfProjects
+export default orderPresentationOfProjects;
